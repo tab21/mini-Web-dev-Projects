@@ -17,4 +17,3 @@ There was just one challenge when making it that the index files read the enviro
 ## What I learnt
 
 I learnt that the environment variable are actually stored in the environment and not the .env file. I think people keep those as backup since after exporting to the environment variables to the environment my application was working.But i also kept them as backup. Thus, I learned to export / set the environment variables.
-
