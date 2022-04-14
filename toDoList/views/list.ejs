@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>To Do List</title>
+</head>
+
+<body>
+
+    <main>
+        <h1> <%= todaysDay %> </h1>
+        <ul>
+            <% for (let i=0 ; i<toDoList.length ; i++ ) {%>
+            <form action="/del" method="post">
+                <div class="list">
+
+                    <div class="todo">
+                        <input type="checkbox">
+                        <li><%= toDoList[i] %></li>
+                    </div>
+
+                    <button class="delete" name= "<%= i %> "><i class="fa-solid fa-circle-minus"></i></button>
+
+
+                </div>
+            </form>
+            <% } %>
+        </ul>
+
+        <form class="adding" action="/" method="post">
+
+            <input type="text" name="todo" placeholder="New To-Do" autocomplete="off" re>
+            <button class="add" type="submit"><i class="fa-solid fa-circle-plus"></i></button>
+
+        </form>
+    </main>
+</body>
+
+</html>
