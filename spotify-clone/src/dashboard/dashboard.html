@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- style sheets  -->
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="./dashboard.css" />
+
+		<!-- material icons  -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+		/>
+
+		<title>Spotify Dashboard</title>
+	</head>
+	<body class="h-screen bg-dark text-swhite">
+		<div
+			class="grid h-full grid-cols-[15rem_1fr] grid-rows-[auto_1fr_auto]"
+		>
+			<!-- side navigation  -->
+			<aside id="side-nav">
+				<nav class="flex flex-col items-start gap-8 py-8 px-4">
+					<section class="">
+						<a href="/">
+							<img
+								class="h-10 w-full object-contain"
+								src="../assets/logos_icons/Spotify_Icon_RGB_White.png"
+								alt="Spotify Logo"
+								srcset=""
+							/>
+						</a>
+					</section>
+					<section>
+						<ul class="flex flex-col gap-4 text-sm text-dark-grey">
+							<li>
+								<a
+									class="flex cursor-pointer items-center gap-2 hover:text-swhite"
+									href="http://localhost:2121/dashboard/dashboard.html"
+								>
+									<span class="material-symbols-outlined">
+										home </span
+									><span></span>Home</a
+								>
+							</li>
+							<li
+								class="flex cursor-pointer items-center gap-2 hover:text-swhite"
+							>
+								<span class="material-symbols-outlined">
+									search </span
+								><span></span>Search
+							</li>
+						</ul>
+					</section>
+					<section
+						id="user-playlists"
+						class="w-full border-t border-dark-grey pt-4"
+					>
+						<ul class="flex flex-col gap-4 text-sm text-dark-grey">
+							<!-- <li class="flex items-center gap-2">adf</li>
+						<li class="flex items-center gap-2"></li> -->
+						</ul>
+					</section>
+				</nav>
+			</aside>
+
+			<!-- header  -->
+			<header id="header" class="relative">
+				<!-- navigation  -->
+				<nav
+					id="navbar"
+					class="bg-transparent sticky top-0 flex justify-end px-4 py-1"
+				>
+					<!-- profile button  -->
+					<button
+						id="user-profile-btn"
+						class="flex items-center gap-3 rounded-md p-2 px-5 hover:bg-dark-grey"
+					>
+						<svg
+							id="default-image"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							class="h-6 w-6 rounded-full bg-grey"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+
+						<h3 id="display-name"></h3>
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								class="h-5 w-5"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M20.03 4.72a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 11.69l6.97-6.97a.75.75 0 011.06 0zm0 6a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06L12 17.69l6.97-6.97a.75.75 0 011.06 0z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</i>
+					</button>
+
+					<!-- profile menu  -->
+					<ul
+						id="profile-menu"
+						class="fixed right-4 top-12 -z-10 hidden w-[15rem] rounded-md bg-darker p-1"
+					>
+						<li
+							class="z-10 w-full cursor-pointer p-2 hover:bg-dark-grey"
+						>
+							Account
+						</li>
+						<li
+							class="w-full cursor-pointer p-2 hover:bg-dark-grey"
+						>
+							Profile
+						</li>
+						<li
+							class="w-full cursor-pointer p-2 hover:bg-dark-grey"
+						>
+							Support
+						</li>
+						<li
+							id="logout"
+							class="flex cursor-pointer justify-center rounded-md p-1 hover:bg-dark-grey"
+						>
+							Logout
+						</li>
+					</ul>
+				</nav>
+
+				<!-- for gradient effect at top  -->
+				<div
+					id="gradient"
+					class="absolute top-0 -z-[1] flex h-72 w-full gap-4 bg-gradient-to-b from-green to-dark p-4 text-4xl"
+				></div>
+			</header>
+
+			<!-- main content  -->
+			<main id="main" class="overflow-auto">
+				<!-- playlist sections loaded using js  -->
+				<div id="playlists-sections" class="mt-[10rem]"></div>
+			</main>
+
+			<!-- footer for now playing  -->
+			<footer
+				class="now-playing border-t border-t-light-black bg-dark px-4 py-2 text-grey"
+			>
+				<section
+					class="grid grid-cols-[1fr_2fr_1fr] items-center gap-x-4"
+				>
+					<!-- song info section  -->
+					<section
+						id="song-info"
+						class="invisible grid grid-cols-[auto_1fr] items-center gap-x-4"
+					>
+						<img
+							id="now-playing-image"
+							class="h-12 w-12"
+							src=""
+							srcset=""
+						/>
+						<section class="flex flex-col justify-center">
+							<h2
+								id="now-playing-song"
+								class="text-sm font-semibold text-swhite"
+							>
+								song title
+							</h2>
+							<p
+								id="now-playing-artists"
+								class="text-xs line-clamp-1"
+							>
+								song artists
+							</p>
+						</section>
+					</section>
+
+					<!-- section for audio control -->
+					<section
+						id="audio-control"
+						class="flex flex-col items-center justify-center"
+					>
+						<section class="flex items-center justify-center">
+							<button id="prev" class="hover:text-swhite">
+								<span
+									style="font-size: 36px"
+									class="material-symbols-outlined"
+								>
+									skip_previous
+								</span>
+							</button>
+							<button id="play" class="hover:text-swhite">
+								<span
+									class="material-symbols-outlined"
+									style="font-size: 40px"
+								>
+									play_circle
+								</span>
+							</button>
+							<button id="next" class="hover:text-swhite">
+								<span
+									class="material-symbols-outlined"
+									style="font-size: 36px"
+								>
+									skip_next
+								</span>
+							</button>
+						</section>
+
+						<section
+							class="flex w-full items-center justify-center gap-4 text-sm"
+						>
+							<span id="song-duration-completed">0:00</span>
+							<section
+								id="timeline"
+								class="w-full cursor-pointer rounded-3xl bg-light-black"
+							>
+								<section
+									id="progress"
+									class="h-2 w-0 rounded-3xl bg-green"
+								></section>
+							</section>
+							<span id="total-song-duration">0:00</span>
+						</section>
+					</section>
+
+					<!-- section for volume -->
+					<section
+						id="volume-control"
+						class="flex items-center justify-center"
+					>
+						<span class="material-symbols-outlined">
+							volume_up
+						</span>
+						<input
+							id="volume"
+							type="range"
+							name=""
+							value="100"
+							min="0"
+							max="100"
+						/>
+					</section>
+				</section>
+			</footer>
+		</div>
+	</body>
+	<script src="./dashboard.js" type="module"></script>
+</html>

@@ -1,0 +1,32 @@
+* {
+	transition: ease-in-out 0.5s;
+}
+
+.grid {
+	display: grid;
+	grid-template-areas:
+		"aside header"
+		"aside main "
+		"footer footer";
+}
+header {
+	grid-area: header;
+}
+main {
+	grid-area: main;
+}
+footer {
+	grid-area: footer;
+}
+aside {
+	grid-area: aside;
+}
+
+.track:hover .track-no,
+.track.selected .track-no {
+	visibility: hidden;
+}
+.track:hover .play,
+.track.selected .play {
+	visibility: visible;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../style.css" />
+		<title>Spotify Login</title>
+	</head>
+	<body class="h-screen bg-dark">
+		<main class="v-full flex h-full items-center justify-center">
+			<section class="flex flex-col items-center gap-8">
+				
+				<!-- spotify logo  -->
+				<img
+					src="../assets/logos_icons/Spotify_Logo_RGB_Green.png	"
+					alt="spotify-logo"
+					class="h-[30vh]"
+				/>
+
+				<!-- login button  -->
+				<button id="login" class="bg-swhite p-2 px-5 rounded-lg hover:bg-green hover:text-swhite" >
+						<span >Login to Spotify<span/>
+						<img
+							src="../assets/logos_icons/Spotify_Icon_RGB_Black.png"
+							alt="spotify-icon"
+							class="ml-4 inline-block h-5"
+							id="buttonIcon"
+							/>
+				</button>
+			</section>
+		</main>
+	</body>
+
+	<script type="module" src="login.js"></script>
+</html>
